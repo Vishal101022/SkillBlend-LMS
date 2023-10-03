@@ -1,9 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
-html, body, :root{
-    height: 100%;
+
+html,
+body,
+:root {
+  height: 100%;
 }
 
-@import "~@uploadthing/react/styles.css"
+.ql-container {
+  font-size: 16px !important;
+}
+
+@import "~@uploadthing/react/styles.css";
