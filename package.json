@@ -14,7 +14,7 @@
     "@hookform/resolvers": "^3.3.1",
     "@mux/mux-node": "^7.3.2",
     "@mux/mux-player": "^1.14.2",
-    "@prisma/client": "^5.3.1",
+    "@prisma/client": "^5.4.1",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
@@ -47,7 +47,7 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",
-    "prisma": "^5.3.1",
+    "prisma": "^5.4.1",
     "tailwindcss": "latest",
     "typescript": "latest"
   }
