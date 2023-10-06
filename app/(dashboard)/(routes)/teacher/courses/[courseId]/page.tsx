@@ -41,7 +41,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
       },
       attachments: {
         orderBy: {
-          createAt: "desc",
+          createdAt: "desc",
         },
       },
     },
