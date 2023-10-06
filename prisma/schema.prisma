@@ -1,48 +1,111 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
+generator client {
+  provider = "prisma-client-js"
+  debug    = true
+}
 
+// Define a new MongoDB datasource
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-  debug    = true // Add this line
-}
-
 model Course {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  userId String @unique
-  title String @db.String
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String
+  title       String  @db.String
   description String? @db.String
-  imageUrl String? @db.String
-  price Float? @db.Double
+  imageUrl    String? @db.String
+  price       Float?  @db.Double
   isPublished Boolean @default(false)
 
-  categoryId String? @db.ObjectId
-  category Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?   @db.ObjectId
+  category   Category? @relation(fields: [categoryId], references: [id])
 
-  attrachments Attachment[]
+  chapters Chapter[]
 
-  createAt DateTime @default(now())
-  updateAt DateTime @updatedAt
+  attachments Attachment[]
+
+  purchases Purchase[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Category {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  name String @db.String @unique
+  id     String   @id @default(auto()) @map("_id") @db.ObjectId
+  name   String   @unique @db.String
   course Course[]
-} 
-
-model Attachment {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  name String @db.String
-  url String @db.String
-  courseId String @db.ObjectId
-
-  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
-  createAt DateTime @default(now())
-  updateAt DateTime @updatedAt
 }
 
+model Attachment {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String @db.String
+  url      String @db.String
+  courseId String @db.ObjectId
+
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Chapter {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  title       String  @db.String
+  description String? @db.String
+  videoUrl    String? @db.String
+  position    Int     @db.Int
+  isPublished Boolean @default(false)
+  isFree      Boolean @default(false)
+
+  muxData MuxData?
+
+  courseId String @db.ObjectId
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  userProgress UserProgress[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model MuxData {
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  assetId    String  @db.String
+  playbackId String? @db.String
+
+  chapterId String  @unique @db.ObjectId
+  chapter   Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+}
+
+model UserProgress {
+  id     String @id @default(uuid()) @map("_id") @db.ObjectId
+  userId String @db.String
+
+  chapterId String  @db.ObjectId
+  chapter   Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+
+  isCompleted Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Purchase {
+  id        String   @id @default(uuid()) @map("_id") @db.ObjectId
+  userId    String   @db.String
+  courseId  String   @db.ObjectId
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PaytmPayment {
+  id              String @id @default(uuid()) @map("_id") @db.ObjectId
+  userId          String @unique
+  paytmCustomerId String @unique
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
