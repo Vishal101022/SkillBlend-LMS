@@ -115,10 +115,10 @@ model Purchase {
   @@unique([userId, courseId])
 }
 
-model PaytmPayment {
+model StripeCustomer {
   id              String @id @default(uuid()) @map("_id") @db.ObjectId
   userId          String @unique
-  paytmCustomerId String @unique
+  stripeCustomerId String @unique
 
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
