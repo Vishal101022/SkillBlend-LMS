@@ -10,6 +10,7 @@ import {
   FcSalesPerformance,
   FcSportsMode
 } from "react-icons/fc";
+import {FaPaintBrush} from "react-icons/fa";
 import { IconType } from "react-icons";
 
 import { CategoryItem } from "./category-item";
@@ -26,6 +27,7 @@ const iconMap: Record<Category["name"], IconType> = {
   "Computer Science": FcMultipleDevices,
   "Filming": FcFilmReel,
   "Engineering": FcEngineering,
+  "Painting": FaPaintBrush,
 };
 
 export const Categories = ({
