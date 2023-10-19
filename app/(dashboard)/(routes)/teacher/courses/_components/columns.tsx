@@ -4,7 +4,7 @@ import { Course } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal, Pencil } from "lucide-react";
 import Link from "next/link";
-
+import { formatPrice } from "@/lib/format";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -45,12 +45,12 @@ export const columns: ColumnDef<Course>[] = [
     },
     cell: ({ row }) => {
       const price = parseFloat(row.getValue("price") || "0");
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(price);
-
-      return <div>{formatted}</div>;
+      const formatted = formatPrice(price);
+      return (
+        <>
+          <div>{formatted}</div>
+        </>
+      );
     },
   },
   {
