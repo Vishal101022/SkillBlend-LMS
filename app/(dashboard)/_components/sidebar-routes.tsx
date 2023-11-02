@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { Layout, Compass, BarChart, List } from "lucide-react";
+import { Layout, Compass, BarChart, List, Trophy  } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
 
 // when you click on the exit button, you will be redirected to the home page
@@ -14,6 +14,11 @@ const guestRoutes = [
     icon: Compass,
     label: "Browse",
     href: "/search",
+  },
+  {
+    icon: Trophy,
+    label: "Leaderboard",
+    href: "/leaderboard",
   },
 ];
 // when you click on the teacher mode button, you will be redirected to the teacher mode page
