@@ -123,3 +123,17 @@ model StripeCustomer {
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 }
+
+model Leaderboard {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.String
+  firstName String   @db.String
+  lastName  String   @db.String
+  rank      Int      @db.Int
+  score     Int      @db.Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId])
+  @@index([rank])
+}
