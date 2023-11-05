@@ -8,6 +8,7 @@ It helps users to create and manage courses, access learning materials, track pr
 ![LMS-4](https://github.com/Vishal101022/SkillBlend-LMS/assets/13450751/9f39e88e-f884-4993-aa38-b67f22bbb6af)
 ![LMS-5](https://github.com/Vishal101022/SkillBlend-LMS/assets/13450751/f6785925-2b84-49a3-9ca6-436748a344ca)
 ![LMS-6](https://github.com/Vishal101022/SkillBlend-LMS/assets/13450751/b4edade0-d524-4d8d-9e11-bb7b6140a864)
+![leaderboard](https://github.com/Vishal101022/SkillBlend-LMS/assets/13450751/a51b89dd-0b45-4aed-9b12-8cc097cae96c)
 
 ## :open_book: things i learned
 1. How Next.js folder structure works (so many route.tsx files).
@@ -44,7 +45,7 @@ It helps users to create and manage courses, access learning materials, track pr
 - Authentication using Clerk
 - ORM using Prisma
 - Mongodb Atlas
-- 
+- added Leaderboard
 ## :hammer_and_wrench: how to run
 ### Prerequisites
 
