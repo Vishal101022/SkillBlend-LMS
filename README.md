@@ -54,7 +54,7 @@ It helps users to create and manage courses, access learning materials, track pr
 ### Cloning the repository
 
 ```shell
-git clone https://github.com/AntonioErdeljac/next13-lms-platform.git
+git clone https://github.com/Vishal101022/SkillBlend-LMS.git
 ```
 
 ### Install packages
